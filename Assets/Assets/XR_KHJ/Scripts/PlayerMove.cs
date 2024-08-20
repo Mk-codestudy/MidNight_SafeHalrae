@@ -58,8 +58,8 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
 
-        Vector3 dirV = Vector3.forward * v;
-        Vector3 dirH = Vector3.right * h;
+        Vector3 dirV = transform.forward * v;
+        Vector3 dirH = transform.right * h;
         Vector3 dir = dirV + dirH;
 
         // 움직이고 있는지 판별하자
