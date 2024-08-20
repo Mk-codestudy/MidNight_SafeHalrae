@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bbb29c575e92ab64eb62ee335dc6f563
+NativeFormatImporter:
+  mainObjectFileID: -1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 4249
+  packageName: Record player
+  packageVersion: 2.0
+  assetPath: Assets/Record_player/Prefabs/record_player.prefab
+  uploadId: 524320
