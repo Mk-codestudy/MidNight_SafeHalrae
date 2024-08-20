@@ -29,7 +29,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 7a1ff575fc1c30d429917dd5030ded46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 94ef36b46e431f345b6c7e9d27c0edb3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7a1ff575fc1c30d429917dd5030ded46, type: 3}
+        m_Texture: {fileID: 2800000, guid: 94ef36b46e431f345b6c7e9d27c0edb3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -94,7 +94,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &179916928617349841
 MonoBehaviour:
   m_ObjectHideFlags: 11
