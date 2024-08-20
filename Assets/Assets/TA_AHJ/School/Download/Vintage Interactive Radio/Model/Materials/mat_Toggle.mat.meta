@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c4eb6e631f9ec1e4a938e252446fbd16
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16021
+  packageName: Interactive Vintage Radio
+  packageVersion: 1
+  assetPath: Assets/Vintage Interactive Radio/Model/Materials/mat_Toggle.mat
+  uploadId: 19498

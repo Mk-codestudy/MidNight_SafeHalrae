@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77fad0a5ec781104bbf11d580bf468d1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16021
+  packageName: Interactive Vintage Radio
+  packageVersion: 1
+  assetPath: Assets/Vintage Interactive Radio/Model/Materials/mat_Arrow.mat
+  uploadId: 19498

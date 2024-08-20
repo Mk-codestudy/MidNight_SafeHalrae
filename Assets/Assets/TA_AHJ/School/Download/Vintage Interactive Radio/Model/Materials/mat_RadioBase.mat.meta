@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a031e1393b6ff0c469b1d64f012d478d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16021
+  packageName: Interactive Vintage Radio
+  packageVersion: 1
+  assetPath: Assets/Vintage Interactive Radio/Model/Materials/mat_RadioBase.mat
+  uploadId: 19498
