@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using UnityEditor.UI;
 using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
 
 public class LogNManager : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class LogNManager : MonoBehaviour
 
     [Header("회원가입 성공")]
     public GameObject joinsuccessUI;
+    public GameObject joinsfailedUI;
 
 
     void Start()
@@ -188,8 +190,13 @@ public class LogNManager : MonoBehaviour
     public void JoinSuccessfulyEnd() //회원가입 완료창 종료하기
     {
         joinsuccessUI.SetActive(false);
+        joinUI.SetActive(false);
     }
 
+    public void JoinFaildConfrim()
+    {
+        joinsfailedUI.SetActive(false);
+    }
 
     public void LoginSuccessNextScene()
     {
