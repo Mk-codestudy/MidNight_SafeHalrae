@@ -3538,33 +3538,6 @@ PrefabInstance:
       propertyPath: DangerClick
       value: 
       objectReference: {fileID: 906606608}
-    - target: {fileID: 4012235668555986046, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4012235668555986046, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[0]
-      value: "\uCC45\uC0C1 \uBAA8\uC11C\uB9AC\uB294 \uC65C \uC704\uD5D8\uD574?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4012235668555986046, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[1]
-      value: "\uCC45\uC0C1\uC5D0\uC11C \uC65C \uB180\uBA74 \uC548 \uB3FC?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4012235668555986046, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[2]
-      value: "\uAD50\uC2E4 \uD559\uC6A9\uD488 \uB54C\uBB38\uC5D0 \uC77C\uC5B4\uB0A0
-        \uC218 \uC788\uB294 \uC0AC\uACE0\uC5D0 \uB300\uD574 \uC54C\uB824\uC918."
-      objectReference: {fileID: 0}
-    - target: {fileID: 4012235668555986046, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[3]
-      value: "\uCC45\uC0C1 \uC704\uC5D0\uC11C \uC65C \uC7A5\uB09C\uC744 \uCE58\uBA74
-        \uC548 \uB3FC?"
-      objectReference: {fileID: 0}
     - target: {fileID: 4455425715966035195, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
       propertyPath: m_Name
@@ -3580,34 +3553,6 @@ PrefabInstance:
       propertyPath: DangerClick
       value: 
       objectReference: {fileID: 906606608}
-    - target: {fileID: 4599200014334280205, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599200014334280205, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[0]
-      value: "\uBCF5\uB3C4\uC5D0\uC11C \uB6F0\uC5B4\uB2E4\uB2C8\uBA74 \uBB34\uC2A8
-        \uC77C\uC774 \uC77C\uC5B4\uB098?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599200014334280205, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[1]
-      value: "\uBCF5\uB3C4\uC5D0\uC11C \uB6F0\uAC8C \uB418\uBA74 \uC5B4\uB5A4 \uC77C\uC774
-        \uC77C\uC5B4\uB098\uB294\uC9C0 \uC54C\uB824\uC904\uB798?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599200014334280205, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[2]
-      value: "\uC65C \uBCF5\uB3C4\uC5D0\uC11C \uBABB \uB6F0\uAC8C \uD558\uB294\uAC74\uB370?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599200014334280205, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[3]
-      value: "\uD559\uAD50\uC5D0\uC11C \uB2EC\uB9B4 \uB54C \uC77C\uC5B4\uB0A0 \uC218
-        \uC788\uB294 \uC0AC\uACE0\uC5D0 \uB300\uD574 \uB9D0\uD574\uC918."
-      objectReference: {fileID: 0}
     - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
       propertyPath: hp
@@ -3615,42 +3560,9 @@ PrefabInstance:
       objectReference: {fileID: 7956035443374398231}
     - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
       propertyPath: DangerClick
       value: 
       objectReference: {fileID: 906606608}
-    - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[0]
-      value: "\uACC4\uB2E8\uC5D0\uC11C \uC8FC\uD589 \uC911\uC5D0 \uC77C\uC5B4\uB0A0
-        \uC218 \uC788\uB294 \uC0AC\uACE0\uC5D0 \uB300\uD574 \uB9D0\uD574\uC918."
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[1]
-      value: "\uACC4\uB2E8\uC740 \uC65C \uC704\uD5D8\uD574?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[2]
-      value: "\uACC4\uB2E8\uC744 \uC774\uC6A9\uD558\uBA74 \uC5B4\uB5A4 \uAC8C \uC704\uD5D8\uD55C\uC9C0
-        \uC54C\uB824\uC904\uB798?"
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601088851216700866, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
-        type: 3}
-      propertyPath: randomquest.Array.data[3]
-      value: "\uACC4\uC0B0\uC5D0\uC11C \uBE60\uB974\uAC8C \uB6F0\uBA74 \uC5B4\uB5BB\uAC8C
-        \uB3FC?"
-      objectReference: {fileID: 0}
     - target: {fileID: 6230782117439605021, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7075,7 +6987,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -9744,13 +9656,14 @@ GameObject:
   - component: {fileID: 1532228463}
   - component: {fileID: 1532228462}
   - component: {fileID: 1532228464}
+  - component: {fileID: 1532228465}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1532228462
 Camera:
   m_ObjectHideFlags: 0
@@ -9861,6 +9774,14 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!81 &1532228465
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532228460}
+  m_Enabled: 1
 --- !u!1001 &1550096731
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -61,6 +61,9 @@ public class PlayerMove : MonoBehaviour
 
         // Animator
         anim = GetComponentInChildren<Animator>();
+
+        // 마우스 잠그자.
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

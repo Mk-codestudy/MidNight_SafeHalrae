@@ -9,12 +9,14 @@ public class BGManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();       
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        audioSource.Play();
+        
+        //Debug.Log("소리 나오는지");
     }
 }
