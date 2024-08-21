@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,7 +40,15 @@ public class PlayerMove : MonoBehaviour
     private bool isRunning = false;
     private float runningTime = 0f;
     public float warningThreshold = 2.0f;
-    
+
+    [Header("안전이 통신용 변수")]
+    public HttpManager hp;
+
+    [Header("랜덤 질문용 리스트")]
+    public List<string> randomquest = new List<string>();
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -179,6 +187,9 @@ public class PlayerMove : MonoBehaviour
 
                     isScreen = true;
                     DangerClick.TriggerDangerCilck();
+                    hp.aiSafy[1] = "주행";
+                    hp.aiSafy[2] = randomquest[(Random.Range(0, 3))];
+                    hp.SafyStartTalk();
                 }
                 
             }
