@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 49f015dbb1b2c0240aae40603c64f09a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 16021
+  packageName: Interactive Vintage Radio
+  packageVersion: 1
+  assetPath: Assets/Vintage Interactive Radio/Scripts/ToggleSwitch.cs
+  uploadId: 19498
