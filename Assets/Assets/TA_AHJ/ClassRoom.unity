@@ -943,6 +943,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: f7b02a0b7b0600d4c83fdd9af11c42cf, type: 3}
+--- !u!1 &101892880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7629674003059203345, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+    type: 3}
+  m_PrefabInstance: {fileID: 607950099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &101892882
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101892880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 044622e8a87b43340a6747e0b79fbd9c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 418526323c2e4aa4b88c1508071134aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &113722022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4047,6 +4074,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1377220223385789851, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377220223385789851, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.904
+      objectReference: {fileID: 0}
     - target: {fileID: 4455425715966035195, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
       propertyPath: m_Name
@@ -4161,7 +4198,11 @@ PrefabInstance:
     - {fileID: 5028098154466512126, guid: ee638ef4170c0ee4a9d65f5628e5dc44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7629674003059203345, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 101892882}
   m_SourcePrefab: {fileID: 100100000, guid: ee638ef4170c0ee4a9d65f5628e5dc44, type: 3}
 --- !u!1001 &611841141
 PrefabInstance:
@@ -10211,7 +10252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1532228461
 AudioListener:
   m_ObjectHideFlags: 0
