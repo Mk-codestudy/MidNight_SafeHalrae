@@ -18,13 +18,13 @@ public class UIManager : MonoBehaviour
     [Header("엔딩 UI")]
     public GameObject endUI;
 
-    private void Update()
-    {
-        if (pm.istalked && dd.istalked && dc.istalked)
-        {
-            endUI.SetActive(true);
-        }
-    }
+    //private void Update()
+    //{
+    //    if (pm.istalked && dd.istalked && dc.istalked)
+    //    {
+    //        endUI.SetActive(true);
+    //    }
+    //}
 
 
     public void ViewLog()
@@ -37,12 +37,21 @@ public class UIManager : MonoBehaviour
     {
         currentSafyUI.SetActive(false);
         logtext.text = "안전이가 여러분을 위한 안전 상식을 준비하고 있어요!\n잠시만요...";
+
+        if (pm.istalked && dd.istalked && dc.istalked)
+        {
+            endUI.SetActive(true);
+        }
     }
 
     public void CloseLog()
     {
         logUI.SetActive(false);
         logtext.text = "안전이가 여러분을 위한 안전 상식을 준비하고 있어요!\n잠시만요...";
+        if (pm.istalked && dd.istalked && dc.istalked)
+        {
+            endUI.SetActive(true);
+        }
     }
 
     public void GotoMain()

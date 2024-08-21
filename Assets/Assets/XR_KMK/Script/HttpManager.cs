@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking; //http ����� ���� ���ӽ����̽�
 using System.Text;          //json, csv���� ���ڵ�(UTF-8)�� ���� ���ӽ����̽�
-using UnityEditor.UI;
+//using UnityEditor.UI;
 using UnityEngine.UI;
 using System;
 using TMPro;
