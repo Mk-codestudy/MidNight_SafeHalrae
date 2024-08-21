@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AutoTextSize : MonoBehaviour
 {
-    public float titleHeight = 120;
+    public float titleHeight = 200;
     public RectTransform logText;
 
     RectTransform rect;
