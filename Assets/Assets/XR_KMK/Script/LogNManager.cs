@@ -5,57 +5,69 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEditor.UI;
 using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 
 public class LogNManager : MonoBehaviour
 {
-    [Header("ë¡œê·¸ì¸ URL")]
+    //request.SetRequestHeader("Authorization", authKey); //Header¿¡ Å° Ãß°¡
+
+
+    [Header("·Î±×ÀÎ URL")]
     public string url;
 
-    [Header("íšŒì›ê°€ì… ë³€ìˆ˜")]
-    //íšŒì›ê°€ì…ì‹œ ì‚¬ìš©í•˜ëŠ” List
+    [Header("È¸¿ø°¡ÀÔ º¯¼ö")]
+    //È¸¿ø°¡ÀÔ½Ã »ç¿ëÇÏ´Â List
     public List<TMP_InputField> userjoinInputs = new List<TMP_InputField>();
     public Toggle isStudent;
     public Button btn_Join;
-    public Text text_response; //ê²°ê³¼ í…ìŠ¤íŠ¸
+    public Text text_response; //°á°ú ÅØ½ºÆ®
 
-    [Header("ë¡œê·¸ì¸ ë³€ìˆ˜")]
-    //ë¡œê·¸ì¸ì‹œ ì‚¬ìš©í•˜ëŠ” List
+    [Header("·Î±×ÀÎ º¯¼ö")]
+    //·Î±×ÀÎ½Ã »ç¿ëÇÏ´Â List
     public List<TMP_InputField> userLoginInputs = new List<TMP_InputField>();
     public Button btn_Login;
 
-    [Header("í´ë¦­í•˜ë©´ ë¡œê·¸ì¸ ì°½ì´ ëœ¨ë„ë¡ í•˜ê¸° ë³€ìˆ˜")]
-    //í´ë¦­í•˜ë©´ ë¡œê·¸ì¸ ì°½ì´ ëœ¨ê²Œ í•˜ì!
-    //ë¡œê·¸ì¸ ì°½ì´ ëœ¨ê³ ...
-    //í…ìŠ¤íŠ¸ setactiveëŠ” falseë¡œ
+    [Header("Å¬¸¯ÇÏ¸é ·Î±×ÀÎ Ã¢ÀÌ ¶ßµµ·Ï ÇÏ±â º¯¼ö")]
+    //Å¬¸¯ÇÏ¸é ·Î±×ÀÎ Ã¢ÀÌ ¶ß°Ô ÇÏÀÚ!
+    //·Î±×ÀÎ Ã¢ÀÌ ¶ß°í...
+    //ÅØ½ºÆ® setactive´Â false·Î
     public Text clickToLogin;
     public GameObject loginUI;
     public GameObject joinUI;
 
-    [Header("ë¡œê·¸ì¸ ì„±ê³µ, ë¡œê·¸ì¸ ì‹¤íŒ¨")]
+    [Header("·Î±×ÀÎ ¼º°ø, ·Î±×ÀÎ ½ÇÆĞ")]
     public GameObject successUI;
     public GameObject failedUI;
     public Text failedscript;
 
-    [Header("íšŒì›ê°€ì… ì„±ê³µ")]
+    [Header("È¸¿ø°¡ÀÔ ¼º°ø")]
     public GameObject joinsuccessUI;
     public GameObject joinsfailedUI;
 
 
+    public static string authKey;
+
     void Start()
     {
 
-        //ë¡œê·¸ì¸ UIëŠ” ì²˜ìŒì— ë³´ì´ë©´ ì•ˆëœë‹¹.
+        //·Î±×ÀÎ UI´Â Ã³À½¿¡ º¸ÀÌ¸é ¾ÈµÈ´ç.
         loginUI.SetActive(false);
         joinUI.SetActive(false);
 
     }
 
-    #region íšŒì›ê°€ì… í†µì‹ 
-    // íšŒì›ê°€ì… Json
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    #region È¸¿ø°¡ÀÔ Åë½Å
+    // È¸¿ø°¡ÀÔ Json
     public void PostJoin()
     {
         btn_Join.interactable = false;
@@ -64,7 +76,7 @@ public class LogNManager : MonoBehaviour
 
     IEnumerator PostJoinJSonRequest(string url)
     {
-        //ì¸í’‹ì°½ ì…ë ¥ ì •ë³´ë¥¼ Json ë°ì´í„°ë¡œ ë³€í™˜
+        //ÀÎÇ²Ã¢ ÀÔ·Â Á¤º¸¸¦ Json µ¥ÀÌÅÍ·Î º¯È¯
         JoinUserData userData = new JoinUserData();
         userData.userId = userjoinInputs[0].text;
         userData.userPass = userjoinInputs[1].text;
@@ -77,33 +89,34 @@ public class LogNManager : MonoBehaviour
 
         using(UnityWebRequest request = UnityWebRequest.Post(url + "/signup", userJsonData, "application/json"))
         {
+            
             yield return request.SendWebRequest();
             if(request.result == UnityWebRequest.Result.Success)
             {
                 print(request.downloadHandler.text);
-                //íšŒì›ê°€ì… ì™„ë£Œ UI ë„ìš°ê¸°
-                //ì™„ë£Œ UIì—ì„œ ë¡œê·¸ì¸ìœ¼ë¡œ ëŒì•„ê°€ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ íšŒì›ê°€ì… ì°½ì´ ì‚¬ë¼ì§
+                //È¸¿ø°¡ÀÔ ¿Ï·á UI ¶ç¿ì±â
+                //¿Ï·á UI¿¡¼­ ·Î±×ÀÎÀ¸·Î µ¹¾Æ°¡±â ¹öÆ°À» ´©¸£¸é È¸¿ø°¡ÀÔ Ã¢ÀÌ »ç¶óÁü
                 joinsuccessUI.SetActive(true);
 
             }
             else
             {
                 print(request.error);
-                //ì˜ˆê¸°ì¹˜ ëª»í•œ ì„œë²„ ì˜¤ë¥˜ UIë„ ë§Œë“¤ì–´ë‘˜ê¹Œ?
+                //¿¹±âÄ¡ ¸øÇÑ ¼­¹ö ¿À·ù UIµµ ¸¸µé¾îµÑ±î?
             }
         }
-        //// Postì¤€ë¹„
-        //UnityWebRequest request = new UnityWebRequest(url+ "/signup", "POST"); //ëª…ì„¸ì„œì— ì íŒ ëŒ€ë¡œ
-        //request.SetRequestHeader("Content-Type", "application/json"); //ëª…ì„¸ì„œì— ì íŒ ëŒ€ë¡œ
-        //request.uploadHandler = new UploadHandlerRaw(jsonBins); //ì´ê±´ ì†”ì§íˆ ì´í•´ëª»í–ˆëŠ”ë°
-        //request.downloadHandler = new DownloadHandlerBuffer(); //ì¼ë‹¨ ë³µë¶™í•´ë†”ì•¼ê² ìŒ
+        //// PostÁØºñ
+        //UnityWebRequest request = new UnityWebRequest(url+ "/signup", "POST"); //¸í¼¼¼­¿¡ ÀûÈù ´ë·Î
+        //request.SetRequestHeader("Content-Type", "application/json"); //¸í¼¼¼­¿¡ ÀûÈù ´ë·Î
+        //request.uploadHandler = new UploadHandlerRaw(jsonBins); //ÀÌ°Ç ¼ÖÁ÷È÷ ÀÌÇØ¸øÇß´Âµ¥
+        //request.downloadHandler = new DownloadHandlerBuffer(); //ÀÏ´Ü º¹ºÙÇØ³ö¾ß°ÚÀ½
 
-        ////Postí•˜ê³  ì‘ë‹µì´ ì˜¬ ë•Œê¹Œì§€ ê¸°ë‹¤ë¦°ë‹¤.
+        ////PostÇÏ°í ÀÀ´äÀÌ ¿Ã ¶§±îÁö ±â´Ù¸°´Ù.
         //yield return request.SendWebRequest();
 
         //if (request.result == UnityWebRequest.Result.Success)
         //{
-        //    // ë‹¤ìš´ë¡œë“œ í•¸ë“¤ëŸ¬ì—ì„œ í…ìŠ¤íŠ¸ ê°’ì„ ë°›ì•„ì„œ UIì— ì¶œë ¥í•œë‹¤. //ê·¼ë° ë‹¤ìš´ë¡œë“œ í•¸ë“¤ëŸ¬ê°€ ë­ì˜ˆì—¼
+        //    // ´Ù¿î·Îµå ÇÚµé·¯¿¡¼­ ÅØ½ºÆ® °ªÀ» ¹Ş¾Æ¼­ UI¿¡ Ãâ·ÂÇÑ´Ù. //±Ùµ¥ ´Ù¿î·Îµå ÇÚµé·¯°¡ ¹¹¿¹¿°
         //    string response = request.downloadHandler.text;
         //    text_response.text = response;
         //    Debug.LogWarning(response);
@@ -118,10 +131,10 @@ public class LogNManager : MonoBehaviour
 
     #endregion
 
-    #region ë¡œê·¸ì¸ í†µì‹ 
+    #region ·Î±×ÀÎ Åë½Å
     public void PostLogin()
     {
-        //ë¡œê·¸ì¸ ë²„íŠ¼ ë¹„í™œì„±í™”í•´ë‘ê¸°
+        //·Î±×ÀÎ ¹öÆ° ºñÈ°¼ºÈ­ÇØµÎ±â
         btn_Login.interactable = false;
         StartCoroutine(PostLoginRequest(url));
     }
@@ -140,6 +153,9 @@ public class LogNManager : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.result == UnityWebRequest.Result.Success)
             {
+                authKey = request.GetResponseHeader("Authorization");
+                Debug.Log(authKey);
+
                 print(request.downloadHandler.text);
                 if (request.downloadHandler.text.Contains("failType"))
                 {
@@ -148,14 +164,14 @@ public class LogNManager : MonoBehaviour
                 }
                 else
                 {
-                    //ë¡œê·¸ì¸ ì„±ê³µ UI
+                    //·Î±×ÀÎ ¼º°ø UI
                     LoginSuccess();
                 }
             }
             else
             {
                 print(request.error);
-                //ë¡œê·¸ì¸ ì‹¤íŒ¨
+                //·Î±×ÀÎ ½ÇÆĞ
                 failedUI.SetActive(true);
                 failedscript.text = request.error.ToString();
             }
@@ -165,29 +181,29 @@ public class LogNManager : MonoBehaviour
     #endregion
 
 
-    public void ClickToLogin() //í´ë¦­í•˜ë©´ ë¡œê·¸ì¸ ì°½ì´ ëœ¨ë„ë¡ í•œë‹¤.
+    public void ClickToLogin() //Å¬¸¯ÇÏ¸é ·Î±×ÀÎ Ã¢ÀÌ ¶ßµµ·Ï ÇÑ´Ù.
     {
         loginUI.SetActive(true);
         clickToLogin.gameObject.SetActive(false);
     }
 
-    public void LetsJoin() //íšŒì›ê°€ì… ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ íšŒì›ê°€ì… ì°½ì´ ëœ¨ë„ë¡ í•œë‹¤.
+    public void LetsJoin() //È¸¿ø°¡ÀÔ ¹öÆ°À» ´©¸£¸é È¸¿ø°¡ÀÔ Ã¢ÀÌ ¶ßµµ·Ï ÇÑ´Ù.
     {
         joinUI.SetActive(true);
     }
 
 
-    public void LoginSuccess() //ë¡œê·¸ì¸ì— ì„±ê³µí•˜ë©´ ë¡œê·¸ì¸ ì„±ê³µ ì°½ì´ ëœ¨ê²Œ í•œë‹¤.
+    public void LoginSuccess() //·Î±×ÀÎ¿¡ ¼º°øÇÏ¸é ·Î±×ÀÎ ¼º°ø Ã¢ÀÌ ¶ß°Ô ÇÑ´Ù.
     {
         successUI.SetActive(true);
     }
     
-    public void ConfrimFaildButton() //ë¡œê·¸ì¸ ì‹¤íŒ¨ ì°½ì— í™•ì¸ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ì°½ì´ êº¼ì§„ë‹¤.
+    public void ConfrimFaildButton() //·Î±×ÀÎ ½ÇÆĞ Ã¢¿¡ È®ÀÎ ¹öÆ°À» ´©¸£¸é Ã¢ÀÌ ²¨Áø´Ù.
     {
         failedUI.SetActive(false);
     }
 
-    public void JoinSuccessfulyEnd() //íšŒì›ê°€ì… ì™„ë£Œì°½ ì¢…ë£Œí•˜ê¸°
+    public void JoinSuccessfulyEnd() //È¸¿ø°¡ÀÔ ¿Ï·áÃ¢ Á¾·áÇÏ±â
     {
         joinsuccessUI.SetActive(false);
         joinUI.SetActive(false);
@@ -200,7 +216,7 @@ public class LogNManager : MonoBehaviour
 
     public void LoginSuccessNextScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1); //1ë²ˆ ì”¬ìœ¼ë¡œ ì´ë™
+        SceneManager.LoadScene(1); //1¹ø ¾ÀÀ¸·Î ÀÌµ¿
     }
 }
 
