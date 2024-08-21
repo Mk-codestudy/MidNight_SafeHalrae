@@ -185,10 +185,11 @@ public class LogNManager : MonoBehaviour
         failedUI.SetActive(false);
     }
 
-    public void JoinSuccessfulyEnd()
+    public void JoinSuccessfulyEnd() //회원가입 완료창 종료하기
     {
         joinsuccessUI.SetActive(false);
     }
+
 
     public void LoginSuccessNextScene()
     {
