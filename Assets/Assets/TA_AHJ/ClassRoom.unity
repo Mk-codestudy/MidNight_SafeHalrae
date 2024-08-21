@@ -3496,6 +3496,33 @@ PrefabInstance:
       propertyPath: DangerClick
       value: 
       objectReference: {fileID: 906606608}
+    - target: {fileID: 2495521916649718222, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: randomquest.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495521916649718222, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: randomquest.Array.data[0]
+      value: "\uACC4\uB2E8\uC774 \uC65C \uC704\uD5D8\uD574?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495521916649718222, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: randomquest.Array.data[1]
+      value: "\uACC4\uB2E8\uC744 \uC774\uC6A9\uD558\uBA74 \uC5B4\uB5A4 \uAC83\uC774
+        \uC704\uD5D8\uD55C\uC9C0 \uC54C\uB824\uC904\uB798?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495521916649718222, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: randomquest.Array.data[2]
+      value: "\uACC4\uB2E8\uC5D0\uC11C\uB294 \uC5B4\uB5A4 \uC0AC\uACE0\uAC00 \uC77C\uC5B4\uB0A0\uAE4C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495521916649718222, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: randomquest.Array.data[3]
+      value: "\uACC4\uB2E8\uC5D0\uC11C \uC77C\uC5B4\uB0A0 \uC218 \uC788\uB294 \uC0AC\uACE0\uC5D0
+        \uB300\uD574 \uC54C\uB824\uC918."
+      objectReference: {fileID: 0}
     - target: {fileID: 4012235668555986046, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
       propertyPath: hp
