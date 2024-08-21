@@ -19,14 +19,6 @@ public class DangerClick : MonoBehaviour
     //[Header("랜덤 질문용 리스트")]
     //public List<string> randomquest = new List<string>();
 
-    public AudioSource audioSource;
-    public AudioClip Siren;
-    public AudioClip Dororong;
-    
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
     public void TriggerDangerCilck()
     {
         particleActive.SetActive(true);
@@ -36,13 +28,16 @@ public class DangerClick : MonoBehaviour
     public IEnumerator FadeInAndOutCoroutine()
     {
         // Fadein 코루틴을 두 번 호출
-        sssiren();
         yield return StartCoroutine(Fadein(warningImage)); // 첫 번째 Fadein
         yield return new WaitForSeconds(0.5f); // 두 번째 Fadein 전 대기 시간 (필요에 따라 조절)
         yield return StartCoroutine(Fadein(warningImage)); // 두 번째 Fadein
+<<<<<<< HEAD
         Ddororong();
 
         particleActive.SetActive(false);
+=======
+        
+>>>>>>> parent of e2275c2 (2024082203)
         ShowotherUI();
     }
 
@@ -75,15 +70,5 @@ public class DangerClick : MonoBehaviour
             otherUI.SetActive(true);
 
         }
-    }
-
-    private void sssiren()
-    {
-        audioSource.PlayOneShot(Siren);
-    }
-
-    private void Ddororong()
-    {
-        audioSource.PlayOneShot(Dororong);
     }
 }

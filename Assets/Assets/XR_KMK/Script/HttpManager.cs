@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking; //http ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½
-using System.Text;          //json, csvï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½(UTF-8)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½
+using UnityEngine.Networking; //http Åë½ÅÀ» À§ÇÑ ³×ÀÓ½ºÆäÀÌ½º
+using System.Text;          //json, csv°°Àº ÀÎÄÚµù(UTF-8)À» À§ÇÑ ³×ÀÓ½ºÆäÀÌ½º
 using UnityEditor.UI;
 using UnityEngine.UI;
 using System;
@@ -10,65 +10,59 @@ using TMPro;
 
 public class HttpManager : MonoBehaviour
 {
-    //ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ URL
-    //public string url; //ï¿½×³ï¿½ ï¿½Ù·ï¿½ Ã³ï¿½Ö¾ï¿½ï¿½ï¿½
+    //µ¥ÀÌÅÍ¸¦ ¹ŞÀ» URL
+    //public string url; //±×³É ¹Ù·Î Ã³³Ö¾úÀ½
 
-    //AI Ãªï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½
+    //AI Ãªº¿ÀÇ ¸»Ç³¼±¿¡ °á°ú µµÃâ½ÃÅ°±â
     public Text talkabout;
 
-    [Header("AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    [Header("AI¾ÈÀüÀÌ µ¥ÀÌÅÍ")]
     public List<string> aiSafy = new List<string>();
 
 
-    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
-    public GameObject logPart; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    public GameObject scrollview; //ï¿½ï¿½Å©ï¿½ï¿½
+    [Header("¾ÈÀüÀÌ ´ëÈ­ ·Î±× ´©ÀûÀ» À§ÇÑ ÇÁ¸®Æé")]
+    public GameObject logPart; //ÇÁ¸®Æé
+    public GameObject scrollview; //½ºÅ©·Ñ
 
     public void SafyStartTalk()
     {
         StartCoroutine(GetRequest());
     }
 
-    //Get ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½Ô¼ï¿½
+    //Get Åë½Å ÄÚ·çÆ¾ ÇÔ¼ö
     IEnumerator GetRequest()
     {
-        if (string.IsNullOrEmpty(LogNManager.authKey))
-        {
-            Debug.LogWarning("LogNManager.authKeyê°€ ì—†ìŒ");
-            yield break;
-        }
-
         AISafyData aiData = new AISafyData();
-        aiData.userNo = int.Parse(aiSafy[0]); //ï¿½Ì°ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ØµÎ°ï¿½ ï¿½ï¿½ï¿½ï¿½
-        aiData.trigger = aiSafy[1]; //ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½Åºï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ş¾Æ´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾Æ¼ï¿½ ï¿½Ø¾ï¿½ï¿½Ò°Í°ï¿½ï¿½ï¿½ï¿½ï¿½
-        aiData.chattingContents = aiSafy[2]; //ï¿½Ì°Íµï¿½
+        aiData.userNo = int.Parse(aiSafy[0]); //ÀÌ°Ç ·Î±×ÀÎÇÒ¶§ ¾ÆÀÌµğ ¹øÈ£ »ó¼ö·Î ±â¾ïÇØµÎ°í Àû±â
+        aiData.trigger = aiSafy[1]; //¿©±â¿¡ °¢ Æ®¸®°Åº° Æ®¸®°Å ½ºÆ®¸µ ¹Ş¾Æ´Ù°¡ ³»°¡ ¾Ë¾Æ¼­ ÇØ¾ßÇÒ°Í°°Àºµğ
+        aiData.chattingContents = aiSafy[2]; //ÀÌ°Íµµ
 
         string aIJsonData = JsonUtility.ToJson(aiData, true);
 
-        //http Get ï¿½ï¿½ï¿½ ï¿½Øºï¿½
+        //http Get Åë½Å ÁØºñ
         using (UnityWebRequest request = UnityWebRequest.Post("http://172.16.17.24:8080/api/chattings", aIJsonData, "application/json"))
         {
-            request.SetRequestHeader("Authorization", LogNManager.authKey); //Headerï¿½ï¿½ Å° ï¿½ß°ï¿½
+            request.SetRequestHeader("Authorization", LogNManager.authKey); //Header¿¡ Å° Ãß°¡
 
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
+            //¼­¹ö¿¡ ¿äÃ» Àü¼Û. ÀÀ´äÀÌ ¿Ã ¶§±îÁö ´ë±â.
             yield return request.SendWebRequest();
 
-            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ 200)ï¿½ï¿½?
+            //ÀÀ´ä ¼º°ø(¼­¹öÄÚµå 200)½Ã?
 
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
+            //ÀÀ´ä¹ŞÀº µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÑ´Ù
             if (request.result == UnityWebRequest.Result.Success)
             {
-                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+                //ÀÀ´ä¹ŞÀº µ¥ÀÌÅÍ Ãâ·Â
                 string response = request.downloadHandler.text;
                 AISafyData parseData =  JsonUtility.FromJson<AISafyData>(response);
 
 
                 talkabout.text = parseData.chattingContents;
 
-                Debug.Log("Ãªï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½... : " + parseData.chattingContents);
+                Debug.Log("Ãªº¿ÀÌ ´ÙÀ½°ú °°Àº ³»¿ëÀ¸·Î ÀÀ´äÇÕ´Ï´Ù... : " + parseData.chattingContents);
 
-                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½Î±×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½
-                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½È­ ï¿½ï¿½ UI ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+                //ÀÀ´äÇÒ ¶§ Ã¤ÆÃ ·Î±×¿¡ ´©Àû½ÃÅ°±â
+                // ÇÁ¸®ÆÕ ÀÎ½ºÅÏ½ºÈ­ ¹× UI ÅØ½ºÆ® ¼³Á¤
                 GameObject newResponse = Instantiate(logPart, scrollview.transform);
                 Text[] texts = newResponse.GetComponentsInChildren<Text>();
                 foreach (Text text in texts)
@@ -84,11 +78,11 @@ public class HttpManager : MonoBehaviour
 
             }
 
-            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ğ½ï¿½.(400, 404, 415 ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½)
-            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            //ÀÀ´ä ½ÇÆĞ½Ã.(400, 404, 415 ¾îÂ¼±¸ÀúÂ¼±¸)
+            //¿¡·¯ ³»¿ë Ãâ·Â
             else
             {
-                talkabout.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½!";
+                talkabout.text = "¼­¹ö ÀÀ´ä¿¡ ½ÇÆĞÇÑ °Í °°¾Æ¿ä!";
                 print(request.error);
             }
         }

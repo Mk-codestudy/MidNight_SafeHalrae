@@ -11,13 +11,14 @@ public class DangerCollider : MonoBehaviour
 
     [Header("랜덤 질문용 리스트")]
     public List<string> randomquest = new List<string>();
-    
-    
 
     public bool istalked; //엔딩 측정용 변수
 
     // Start is called before the first frame update
-   
+    void Start()
+    {
+        // �����Ҷ� UI ��Ȱ��ȭ
+    }
 
     // Update is called once per frame
     void Update()
