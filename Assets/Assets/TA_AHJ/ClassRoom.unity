@@ -12657,6 +12657,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot02
       objectReference: {fileID: 0}
+    - target: {fileID: 1210612711337575813, guid: b95ef6e3b80301d46889a2b5fb441db7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1983595342392270655, guid: b95ef6e3b80301d46889a2b5fb441db7,
         type: 3}
       propertyPath: m_LocalPosition.x
