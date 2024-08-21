@@ -3649,7 +3649,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -3674,7 +3674,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 8.08, y: 16.06, z: 6.7}
-  m_Center: {x: 9.18, y: 2.68, z: 5.12}
+  m_Center: {x: 9.18, y: 2.68, z: 5.86}
 --- !u!65 &1399738274726489377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6435,7 +6435,8 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 5.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6842480776410730701, guid: 9905765dac25f1043a8181a65099acb2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
