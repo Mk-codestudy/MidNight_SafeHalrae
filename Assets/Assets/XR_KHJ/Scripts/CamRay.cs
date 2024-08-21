@@ -4,39 +4,80 @@ using UnityEngine;
 
 public class CamRay : MonoBehaviour
 {
-    public Transform player;
-    public float distanceFromPlayer = 3.0f;
-    public float minDistance = 1.0f;
-    public LayerMask layerMask;
-    public float cameraSmoothSpeed = 10.0f;
+    // 따라가야 할 오브젝트 정보
+    public Transform objectToFollow;
+    // 따라갈 스피드
+    public float followSpeed = 10f;
+  
+    // 카메라의 정보도
+    public Transform realCamera;
+    // 방향
+    public Vector3 dirNomalized;
+    // 정해진 방향을 저장해주는 변수
+    public Vector3 finalDir;
+    // 최소 거리
+    public float minDistance;
+    // 최대 거리
+    public float maxDistance;
 
-    private Vector3 cameraOffset;
+    // 최종적으로 결정된 거리
+    public float finalDistance;
+    public float smoothness = 10f;
+
+    //  레이어 마스크
+    public LayerMask collisionMask;
+
+    Vector3 dir;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraOffset = new Vector3(0, 2, -distanceFromPlayer);
+        realCamera = Camera.main.transform;
+
+        maxDistance = (transform.position - realCamera.position).magnitude;
+
+        Debug.LogError("maxDist :" + maxDistance);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 카메라의 목표 위치 계산 (플레이어의 뒤쪽 일정 거리)
-        Vector3 desiredCameraPosition = player.position + player.TransformDirection(cameraOffset);
 
-        // 레이캐스트로 플레이어와 카메라 사이에 충돌체가 있는지 확인
+        Vector3 dirToCam = realCamera.position - transform.position;
+        dirToCam.Normalize();
+        Ray ray = new Ray(transform.position, dirToCam);
+
         RaycastHit hit;
-        if (Physics.Linecast(player.position, desiredCameraPosition, out hit, layerMask))
+
+        LayerMask wallMake = LayerMask.GetMask("Wall");
+        if (Physics.Raycast(ray, out hit, maxDistance, wallMake))
         {
-            // 충돌이 감지되면 카메라를 충돌 위치로 이동 (충돌체와 플레이어 사이의 거리를 유지)
-            float distanceToObstacle = Vector3.Distance(player.position, hit.point) - 0.5f; // 약간의 여유를 줌
-            desiredCameraPosition = player.position + player.TransformDirection(cameraOffset.normalized * Mathf.Clamp(distanceToObstacle, minDistance, distanceFromPlayer));
+            realCamera.transform.position = hit.point;
         }
+        else
+        {
+            realCamera.transform.position = transform.position + dirToCam * maxDistance;
+            Debug.Log("maxDist :" + (realCamera.position - transform.position).magnitude);
+        }
+        
 
-        // 카메라를 부드럽게 이동
-        transform.position = Vector3.Lerp(transform.position, desiredCameraPosition, cameraSmoothSpeed * Time.deltaTime);
 
-        // 카메라가 항상 플레이어를 바라보도록 함
-        transform.LookAt(player.position + Vector3.up * 1.5f);  // 약간의 오프셋 추가
+        //transform.position = Vector3.MoveTowards(transform.position, objectToFollow.position, followSpeed * Time.deltaTime);
+
+        //finalDir = transform.TransformPoint(dirNomalized * maxDistance);
+
+        //RaycastHit hit;
+
+        //if (Physics.Raycast(objectToFollow.position, finalDir, out hit, collisionMask))
+        //{
+        //    finalDistance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
+        //}
+        //else
+        //{
+        //    finalDistance = maxDistance;
+        //}
+
+        //realCamera.localPosition = Vector3.Lerp(realCamera.localPosition, dirNomalized * finalDistance, Time.deltaTime * smoothness);
+
     }
 }
