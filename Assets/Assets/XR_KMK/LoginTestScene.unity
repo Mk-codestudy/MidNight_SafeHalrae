@@ -1211,9 +1211,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 269172014}
+      - m_Target: {fileID: 269172013}
         m_TargetAssemblyTypeName: LogNManager, Assembly-CSharp
-        m_MethodName: JoinSuccessfulyEnd
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6747,7 +6747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1720345433
 RectTransform:
   m_ObjectHideFlags: 0
