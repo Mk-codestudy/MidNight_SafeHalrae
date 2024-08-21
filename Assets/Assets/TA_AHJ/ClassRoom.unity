@@ -4206,7 +4206,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8144633895761540838, guid: ee638ef4170c0ee4a9d65f5628e5dc44, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7109456176505423787, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
@@ -4218,6 +4219,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1440139139}
+    - targetCorrespondingSourceObject: {fileID: 4455425715966035195, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1440139144}
   m_SourcePrefab: {fileID: 100100000, guid: ee638ef4170c0ee4a9d65f5628e5dc44, type: 3}
 --- !u!4 &607950100 stripped
 Transform:
@@ -8628,6 +8633,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72bd72f013d8884baca2cdc9278291a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1440139144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440139134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34c1f0cb2927224fb528ef4bd6a55a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharp: {fileID: 1014976181}
+  interactionDistance: 4
 --- !u!1001 &1441123369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9096,7 +9115,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1532228463}
   - component: {fileID: 1532228462}
-  - component: {fileID: 1532228461}
   - component: {fileID: 1532228464}
   m_Layer: 0
   m_Name: Main Camera
@@ -9105,14 +9123,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1532228461
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1532228460}
-  m_Enabled: 1
 --- !u!20 &1532228462
 Camera:
   m_ObjectHideFlags: 0
