@@ -73,11 +73,13 @@ public class DangerClick : MonoBehaviour
 
     private void sssiren()
     {
+        audioSource.volume = 0.3f;
         audioSource.PlayOneShot(Siren);
     }
 
     private void Ddororong()
     {
+        audioSource.volume = 1.3f;
         audioSource.PlayOneShot(Dororong);
     }
 }
