@@ -1,43 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class DangerClick : MonoBehaviour
 {
-    public Camera camera;
+    public Camera mainCamera;
     public float rayDistance = 5f;
-    public GameObject warningImage;
+    public Image warningImage;
+    //public GameObject wimage;
+    //private FadeImage fadeImageScript;
+    
 
     void Update()
     {
         RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(Physics.Raycast(ray, out hit, rayDistance))
+            if (Physics.Raycast(ray, out hit, rayDistance))
             {
                 if (hit.collider.CompareTag("Danger"))
                 {
                     Debug.Log("Danger");
-
-                    if (warningImage != null)
-                    {
-                        warningImage.SetActive(true);
-                        //StartCoroutine((HideWaringImageAfterDelay(2f))); // 2초 뒤에 꺼지는 코드, 클릭할 때 까지 켜져 있거나 하면 그거는 수정해야됨.
-                    }
                     
+                    //wimage.SetActive(true); // 경고 이미지 활성화
+                    StartCoroutine(Fadein(warningImage)); // 2초 후에 숨기기
                 }
             }
         }
     }
 
-    IEnumerator HideWaringImageAfterDelay(float delay)
+    public IEnumerator Fadein(Image blackout)
     {
-        yield return new WaitForSeconds(delay);
-        if (warningImage != null)
+        Color fadeColor = blackout.color;
+        for (int i = 0; i < 100; i++)
         {
-            warningImage.SetActive(false);
+            fadeColor.a += 0.01f;
+            blackout.color = fadeColor;
+            yield return new WaitForSeconds(0.005f);
         }
+        yield return new WaitForSeconds(0.1f);
+        
+        for (int i = 0; i < 100; i++)
+        {
+            fadeColor.a -= 0.01f;
+            blackout.color = fadeColor;
+            yield return new WaitForSeconds(0.005f);
+        }
+        
     }
+    
+  
 }
