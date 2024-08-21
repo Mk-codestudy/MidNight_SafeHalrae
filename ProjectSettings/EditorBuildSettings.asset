@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Login.unity
     guid: 6efa6b148fc3f6943b770ab73b5dabc2
   - enabled: 1
-    path: Assets/Assets/XR_KMK/MK_TestScene.unity
-    guid: d9ec4cf36dcf97b41957339e0e287894
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Assets/TA_AHJ/ClassRoom.unity
+    guid: ecf69ff818ca6374f93ac72cbd62fc48
   m_configObjects: {}
