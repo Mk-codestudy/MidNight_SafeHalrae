@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: de8452d8341e1624d89900644326570b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 150066
+  packageName: Japanese School Art room
+  packageVersion: 1.0
+  assetPath: Assets/JP_School art room/Prefabs/easel01_board.prefab
+  uploadId: 319253
