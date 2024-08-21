@@ -16,11 +16,13 @@ public class DangerDesk : MonoBehaviour
     public List<string> randomquest = new List<string>();
 
     public bool istalked; //엔딩 측정용 변수
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
