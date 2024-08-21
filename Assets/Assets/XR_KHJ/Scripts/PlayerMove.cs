@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
     public float jumpPower = 3f;
 
     // �����̰� �ִ��� �Ǻ�
-    bool isMoving = false;
+    public bool isMoving = false;
 
     // Animation
     Animator anim;
@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
     [Header("랜덤 질문용 리스트")]
     public List<string> randomquest = new List<string>();
 
-
+    public bool istalked; //엔딩 측정용 변수
 
 
     // Start is called before the first frame update
@@ -189,6 +189,7 @@ public class PlayerMove : MonoBehaviour
                     print("ȭ�� ���Ͷ�");
 
                     isScreen = true;
+                    istalked = true;
                     DangerClick.TriggerDangerCilck();
                     hp.aiSafy[1] = "주행";
                     hp.aiSafy[2] = randomquest[(Random.Range(0, 3))];
