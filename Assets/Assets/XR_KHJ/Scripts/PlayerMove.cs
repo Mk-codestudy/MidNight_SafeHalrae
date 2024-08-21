@@ -4,45 +4,51 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    // ÇÃ·¹ÀÌ¾îÀÇ ÀÌµ¿ ¹æÇâ
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
     Vector3 dir;
 
-    // ÇÃ·¹ÀÌ¾îÀÇ ÀÌµ¿ ¼Óµµ
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½
     public float moveSpeed = 2f;
-    // ÇÃ·¹ÀÌ¾îÀÇ ¶Ù´Â ¼Óµµ
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½ ï¿½Óµï¿½
     public float runSpeed = 10f;
-    // ÇÃ·¹ÀÌ¾îÀÇ °È´Â ¼Óµµ
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½È´ï¿½ ï¿½Óµï¿½
     public float walkSpeed = 5f;
+    public DangerClick DangerClick;
 
-    // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯
+    // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½
     CharacterController cc;
-    // Áß·Â
+    // ï¿½ß·ï¿½
     float gravity = -9.81f;
-    // y ¹æÇâ ¼Ó·Â
+    // y ï¿½ï¿½ï¿½ï¿½ ï¿½Ó·ï¿½
     float yVelocity;
-    // ÇöÀç Á¡ÇÁ È½¼ö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
     int jumpCurrCnt;
-    // ÃÖ´ë Á¡ÇÁ È½¼ö
+    // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
     int jumpMaxCnt = 2;
-    // Á¡ÇÁ Èû
-    float jumpPower = 3f;
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public float jumpPower = 3f;
 
-    // ¿òÁ÷ÀÌ°í ÀÖ´ÂÁö ÆÇº°
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Çºï¿½
     bool isMoving = false;
 
     // Animation
     Animator anim;
 
     float speedValue = 1;
+
+    // ï¿½Ù´ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private bool isRunning = false;
+    private float runningTime = 0f;
+    public float warningThreshold = 2.0f;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯
+        // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½
         cc = GetComponent<CharacterController>();
 
-        // ÀÌµ¿¼Ó·ÂÀ» °È´Â ¼Ó·ÂÀ¸·Î ¼³Á¤
+        // ï¿½Ìµï¿½ï¿½Ó·ï¿½ï¿½ï¿½ ï¿½È´ï¿½ ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         moveSpeed = walkSpeed;
 
         // Animator
@@ -52,15 +58,17 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ÇÃ·¹ÀÌ¾î ÀÌµ¿
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½
         WASD_Move();
 
-        // ÇÃ·¹ÀÌ¾î ´ë½¬
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ë½¬
         WalkRun();
 
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ë½¬ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
+        CheckRunning();
     }
    
-    // ÇÃ·¹ÀÌ¾î ÀÌµ¿
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½
     void WASD_Move()
     {
         float v = Input.GetAxis("Vertical");
@@ -70,44 +78,49 @@ public class PlayerMove : MonoBehaviour
         Vector3 dirH = transform.right * h;
         Vector3 dir = dirV + dirH;
 
-        // ¿òÁ÷ÀÌ°í ÀÖ´ÂÁö ÆÇº°ÇÏÀÚ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Çºï¿½ï¿½ï¿½ï¿½ï¿½
         isMoving = dir.sqrMagnitude > 0;
         dir.Normalize();
 
-        // Shift ´©¸£¸é ¼Óµµ°ª 2¹è
+        // Shift ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ 2ï¿½ï¿½
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             SetWalkRun(true);
             speedValue = 2f;
+            isRunning = true;
+            //print("È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
-        // Shift ¶¼¸é ¼Óµµ°ª 1¹è(¿øÀ§Ä¡ÇÑ´Ù)
+        // Shift ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ 1ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½Ñ´ï¿½)
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             SetWalkRun(false);
             speedValue = 1f;
+            isRunning = false;
+            runningTime = 0f;
+            //print("È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
 
-        // ÇÃ·¹ÀÌ¾î ¾Ö´Ï¸ÞÀÌ¼Ç
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         anim.SetFloat("Speed", dir.sqrMagnitude * speedValue);
 
         //transform.position += dir * moveSpeed * Time.deltaTime;
-        // Ä³¸¯ÅÍ°¡ ¶¥¿¡ ÀÖÀ¸¸é
+        // Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (cc.isGrounded)
         {
-            // yVelocity 0À¸·Î ÃÊ±âÈ­
+            // yVelocity 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
             yVelocity = 0;
             jumpCurrCnt = 0;
 
             anim.SetFloat("JumpPose", 0f);
         }
 
-        // ½ºÆäÀÌ½º¹Ù¸¦ ´©¸£¸é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // ÇÃ·¹ÀÌ¾î°¡ Á¡ÇÁÇÑ´Ù.
+            // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
             if (jumpCurrCnt < jumpMaxCnt)
             {
-                // yVelocity¿¡ jumpPower¸¦ ¼ÂÆÃÇÑ´Ù.
+                // yVelocityï¿½ï¿½ jumpPowerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
                 yVelocity = jumpPower;
                 jumpCurrCnt++;
 
@@ -116,25 +129,25 @@ public class PlayerMove : MonoBehaviour
             }
         }
      
-        // Á¡ÇÁ ³¡³ª°í ³ª¸é Áß·Â°ªÀ» ÀÌ¿ëÇØ¼­ °¨¼Ò½ÃÅ²´Ù.
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß·Â°ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½Å²ï¿½ï¿½.
         yVelocity += gravity * Time.deltaTime;
-        // dir.y °ª¿¡ yVelocity ¼ÂÆÃ
+        // dir.y ï¿½ï¿½ï¿½ï¿½ yVelocity ï¿½ï¿½ï¿½ï¿½
         dir.y = yVelocity;
 
-        // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯¸¦ ÀÌ¿ëÇØ¼­ °È´Â´Ù.
+        // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ ï¿½È´Â´ï¿½.
         cc.Move(dir * moveSpeed * Time.deltaTime);
 
     }
 
-    // ÇÃ·¹ÀÌ¾î ´ë½¬
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ë½¬
     void WalkRun()
     {
-        // ¿ÞÂÊ Shift Å°¸¦ ´©¸£¸é 
+        // ï¿½ï¿½ï¿½ï¿½ Shift Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             SetWalkRun(true);
         }
-        // ¿ÞÂÊ Shift Å°¸¦ ¶¼¸é
+        // ï¿½ï¿½ï¿½ï¿½ Shift Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             SetWalkRun(false);
@@ -143,8 +156,33 @@ public class PlayerMove : MonoBehaviour
 
     public void SetWalkRun(bool isRun)
     {
-        // isRun ¿¡ µû¶ó¼­ MoveSpeed º¯°æ
+        // isRun ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ MoveSpeed ï¿½ï¿½ï¿½ï¿½
         moveSpeed = isRun ? runSpeed : moveSpeed;
+    }
+
+
+    bool isScreen = false;
+
+    // ï¿½Ù°ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ñ´ï¿½
+    void CheckRunning()
+    {
+        if(isRunning)
+        {
+            runningTime += Time.deltaTime;
+
+            if(runningTime >= warningThreshold)
+            {
+                if(!isScreen)
+                {
+                    // È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
+                    print("È­ï¿½ï¿½ ï¿½ï¿½ï¿½Í¶ï¿½");
+
+                    isScreen = true;
+                    DangerClick.TriggerDangerCilck();
+                }
+                
+            }
+        }
     }
 
 
