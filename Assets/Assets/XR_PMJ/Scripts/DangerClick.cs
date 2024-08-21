@@ -7,6 +7,7 @@ public class DangerClick : MonoBehaviour
     public Camera mainCamera;
     public float rayDistance = 5f;
     public Image warningImage;
+    public GameObject otherUI;
 
     void Update()
     {
@@ -35,6 +36,8 @@ public class DangerClick : MonoBehaviour
         yield return StartCoroutine(Fadein(image)); // 첫 번째 Fadein
         yield return new WaitForSeconds(0.5f); // 두 번째 Fadein 전 대기 시간 (필요에 따라 조절)
         yield return StartCoroutine(Fadein(image)); // 두 번째 Fadein
+        
+        ShowotherUI();
     }
 
     private IEnumerator Fadein(Image blackout)
@@ -55,6 +58,15 @@ public class DangerClick : MonoBehaviour
             fadeColor.a -= 0.01f;
             blackout.color = fadeColor;
             yield return new WaitForSeconds(0.005f);
+        }
+    }
+
+    private void ShowotherUI()
+    {
+        if (otherUI != null)
+        {
+            Debug.Log("켜졌지롱!");
+            otherUI.SetActive(true);
         }
     }
 }
