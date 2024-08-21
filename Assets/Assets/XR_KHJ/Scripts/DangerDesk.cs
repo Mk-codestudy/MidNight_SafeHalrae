@@ -7,6 +7,7 @@ public class DangerDesk : MonoBehaviour
 {
     public GameObject sharp;
     public float interactionDistance = 4f;
+    public 
 
     // Start is called before the first frame update
     void Start()
@@ -17,25 +18,27 @@ public class DangerDesk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // »þÇÁ¶û ÇÃ·¹ÀÌ¾î »óÈ£ÀÛ¿ë
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½
 
-        // »þÇÁ¿Í ÇÃ·¹ÀÌ¾îÀÇ °Å¸® ±¸ÇÏ±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
         float distanceToPlayer = Vector3.Distance(sharp.transform.position, transform.position);
 
-        // »þÇÁ¶û ÇÃ·¹ÀÌ¾îÀÇ °Å¸®°¡ »óÈ£ÀÛ¿ë °Å¸®º¸´Ù Ä¿Áö¸é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½
         if (distanceToPlayer > interactionDistance)
         {
-            // UI ºñÈ°¼ºÈ­
+            // UI ï¿½ï¿½È°ï¿½ï¿½È­
 
             return;
         }
         else
         {
-            // UI È°¼ºÈ­
+            // UI È°ï¿½ï¿½È­
 
             if(Input.GetKeyDown(KeyCode.E))
             {
-                print("»óÈ£ÀÛ¿ë Ã¼Å©");
+                print("ï¿½ï¿½È£ï¿½Û¿ï¿½ Ã¼Å©");
+                
+                
             }
         }
 
