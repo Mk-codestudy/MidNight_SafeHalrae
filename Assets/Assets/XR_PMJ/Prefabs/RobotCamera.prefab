@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5262425891493482895}
   - component: {fileID: 1016332257887209197}
-  - component: {fileID: 3706786172807617642}
   - component: {fileID: 6566288264409056708}
   m_Layer: 7
   m_Name: RobotCamera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3706786172807617642
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8026496642267564410}
-  m_Enabled: 1
 --- !u!114 &6566288264409056708
 MonoBehaviour:
   m_ObjectHideFlags: 0
