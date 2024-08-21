@@ -6,6 +6,7 @@ public class DangerRay : MonoBehaviour
 {
     public Camera mainCamera;
     public float rayDistance = 5f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,11 @@ public class DangerRay : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Danger"))
                 {
-                    print("À§ÇèÇØ!");
+                    print("ë³µë„");
+                    
 
-                    //wimage.SetActive(true); // °æ°í ÀÌ¹ÌÁö È°¼ºÈ­
-                    //StartCoroutine(Fadein(warningImage)); // 2ÃÊ ÈÄ¿¡ ¼û±â±â
+                    //wimage.SetActive(true); // ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­
+                    //StartCoroutine(Fadein(warningImage)); // 2ï¿½ï¿½ ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
                 }
             }
         }
