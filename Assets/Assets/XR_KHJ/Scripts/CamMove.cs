@@ -1,30 +1,30 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
-    // Ä«¸Ş¶ó°¡ µû¶ó´Ù´Ò Å¸°Ù ¼³Á¤
+    // ì¹´ë©”ë¼ê°€ ë”°ë¼ë‹¤ë‹ íƒ€ê²Ÿ ì„¤ì •
     public GameObject Target;
     
-    // xÁÂÇ¥
+    // xì¢Œí‘œ
     public float offsetX = 0.0f;
-    // yÁÂÇ¥
+    // yì¢Œí‘œ
     public float offsetY = 10.0f;
-    // zÁÂÇ¥
+    // zì¢Œí‘œ
     public float offsetZ = -10.0f;
 
-    // Ä«¸Ş¶óÀÇ ¼Óµµ
+    // ì¹´ë©”ë¼ì˜ ì†ë„
     public float CameraSped = 10.0f;
-    // Å¸°Ù À§Ä¡
+    // íƒ€ê²Ÿ ìœ„ì¹˜
     Vector3 TargetPos;
 
-    // È¸Àü ¼Ó·Â
+    // íšŒì „ ì†ë ¥
     float rotSpeed = 200;
-    // È¸Àü Çã¿ë
+    // íšŒì „ í—ˆìš©
     public bool useRotY;
     public bool useRotX;
-    // È¸Àü °ª
+    // íšŒì „ ê°’
     float rotY;
     float rotX;
 
@@ -37,33 +37,33 @@ public class CamMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ¸¶¿ì½º ¿òÁ÷ÀÓ°ªÀ» ¹Ş¾Æ¿Â´Ù.
+        // ë§ˆìš°ìŠ¤ ì›€ì§ì„ê°’ì„ ë°›ì•„ì˜¨ë‹¤.
         float mx = Input.GetAxis("Mouse X");
         float my = Input.GetAxis("Mouse Y");
 
-        // È¸Àü °¢µµ¸¦ ´©Àû
+        // íšŒì „ ê°ë„ë¥¼ ëˆ„ì 
         if (useRotY) rotY += mx * rotSpeed * Time.deltaTime;
         if (useRotX) rotX += my * rotSpeed * Time.deltaTime;
 
-        // rotX ÀÇ °ªÀÇ -80 ~ 80 µµ·Î Á¦ÇÑ (ÃÖ¼Ò°ª, ÃÖ´ë°ª)
-        rotX = Mathf.Clamp(rotX, -50, 50);
+        // rotX ì˜ ê°’ì˜ -80 ~ 80 ë„ë¡œ ì œí•œ (ìµœì†Œê°’, ìµœëŒ€ê°’)
+        rotX = Mathf.Clamp(rotX, -30, 30);
         rotY = Mathf.Clamp(rotY, -180, 180);
 
         transform.rotation = Quaternion.Euler(rotX, rotY, 0);
 
 
-        // ¹°Ã¼¸¦ È¸Àü °¢µµ·Î ¼ÂÆÃ ÇÏÀÚ.
+        // ë¬¼ì²´ë¥¼ íšŒì „ ê°ë„ë¡œ ì…‹íŒ… í•˜ì.
         transform.localEulerAngles = new Vector3(-rotX, rotY, 0);
 
 
-        //// Å¸°Ù À§Ä¡Á¡ ÁöÁ¤
+        //// íƒ€ê²Ÿ ìœ„ì¹˜ì  ì§€ì •
         //TargetPos = new Vector3(
         //    Target.transform.position.x + offsetX,
         //    Target.transform.position.y + offsetY,
         //    Target.transform.position.z + offsetZ
         //    );
 
-        //// Ä«¸Ş¶óÀÇ ¿òÁ÷ÀÓÀ» ºÎµå·´°Ô ÇÑ´Ù.
+        //// ì¹´ë©”ë¼ì˜ ì›€ì§ì„ì„ ë¶€ë“œëŸ½ê²Œ í•œë‹¤.
         //transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * CameraSped);
 
     }

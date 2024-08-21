@@ -1,33 +1,33 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    // ÇÃ·¹ÀÌ¾îÀÇ ÀÌµ¿ ¹æÇâ
+    // í”Œë ˆì´ì–´ì˜ ì´ë™ ë°©í–¥
     Vector3 dir;
 
-    // ÇÃ·¹ÀÌ¾îÀÇ ÀÌµ¿ ¼Óµµ
+    // í”Œë ˆì´ì–´ì˜ ì´ë™ ì†ë„
     public float moveSpeed = 2f;
-    // ÇÃ·¹ÀÌ¾îÀÇ ¶Ù´Â ¼Óµµ
+    // í”Œë ˆì´ì–´ì˜ ë›°ëŠ” ì†ë„
     public float runSpeed = 10f;
-    // ÇÃ·¹ÀÌ¾îÀÇ °È´Â ¼Óµµ
+    // í”Œë ˆì´ì–´ì˜ ê±·ëŠ” ì†ë„
     public float walkSpeed = 5f;
 
-    // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯
+    // ìºë¦­í„° ì»¨íŠ¸ë¡¤ëŸ¬
     CharacterController cc;
-    // Áß·Â
+    // ì¤‘ë ¥
     float gravity = -9.81f;
-    // y ¹æÇâ ¼Ó·Â
+    // y ë°©í–¥ ì†ë ¥
     float yVelocity;
-    // ÇöÀç Á¡ÇÁ È½¼ö
+    // í˜„ì¬ ì í”„ íšŸìˆ˜
     int jumpCurrCnt;
-    // ÃÖ´ë Á¡ÇÁ È½¼ö
+    // ìµœëŒ€ ì í”„ íšŸìˆ˜
     int jumpMaxCnt = 2;
-    // Á¡ÇÁ Èû
+    // ì í”„ í˜
     public float jumpPower = 3f;
 
-    // ¿òÁ÷ÀÌ°í ÀÖ´ÂÁö ÆÇº°
+    // ì›€ì§ì´ê³  ìˆëŠ”ì§€ íŒë³„
     bool isMoving = false;
 
     // Animation
@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
 
     float speedValue = 1;
 
-    // ¶Ù´Â »óÅÂ¿Í ½Ã°£ ÃøÁ¤ º¯¼ö
+    // ë›°ëŠ” ìƒíƒœì™€ ì‹œê°„ ì¸¡ì • ë³€ìˆ˜
     private bool isRunning = false;
     private float runningTime = 0f;
     public float warningThreshold = 2.0f;
@@ -44,30 +44,33 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯
+        // ìºë¦­í„° ì»¨íŠ¸ë¡¤ëŸ¬
         cc = GetComponent<CharacterController>();
 
-        // ÀÌµ¿¼Ó·ÂÀ» °È´Â ¼Ó·ÂÀ¸·Î ¼³Á¤
+        // ì´ë™ì†ë ¥ì„ ê±·ëŠ” ì†ë ¥ìœ¼ë¡œ ì„¤ì •
         moveSpeed = walkSpeed;
 
         // Animator
         anim = GetComponentInChildren<Animator>();
+
+        // ë§ˆìš°ìŠ¤ ì ê·¸ê¸°
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ÇÃ·¹ÀÌ¾î ÀÌµ¿
+        // í”Œë ˆì´ì–´ ì´ë™
         WASD_Move();
 
-        // ÇÃ·¹ÀÌ¾î ´ë½¬
+        // í”Œë ˆì´ì–´ ëŒ€ì‰¬
         WalkRun();
 
-        // ÇÃ·¹ÀÌ¾î°¡ ´ë½¬ ÁßÀÎÁö Ã¼Å©
+        // í”Œë ˆì´ì–´ê°€ ëŒ€ì‰¬ ì¤‘ì¸ì§€ ì²´í¬
         CheckRunning();
     }
    
-    // ÇÃ·¹ÀÌ¾î ÀÌµ¿
+    // í”Œë ˆì´ì–´ ì´ë™
     void WASD_Move()
     {
         float v = Input.GetAxis("Vertical");
@@ -77,49 +80,49 @@ public class PlayerMove : MonoBehaviour
         Vector3 dirH = transform.right * h;
         Vector3 dir = dirV + dirH;
 
-        // ¿òÁ÷ÀÌ°í ÀÖ´ÂÁö ÆÇº°ÇÏÀÚ
+        // ì›€ì§ì´ê³  ìˆëŠ”ì§€ íŒë³„í•˜ì
         isMoving = dir.sqrMagnitude > 0;
         dir.Normalize();
 
-        // Shift ´©¸£¸é ¼Óµµ°ª 2¹è
+        // Shift ëˆ„ë¥´ë©´ ì†ë„ê°’ 2ë°°
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             SetWalkRun(true);
             speedValue = 2f;
             isRunning = true;
-            //print("È­¸é ³ª¿À³ª");
+            //print("í™”ë©´ ë‚˜ì˜¤ë‚˜");
         }
-        // Shift ¶¼¸é ¼Óµµ°ª 1¹è(¿øÀ§Ä¡ÇÑ´Ù)
+        // Shift ë–¼ë©´ ì†ë„ê°’ 1ë°°(ì›ìœ„ì¹˜í•œë‹¤)
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             SetWalkRun(false);
             speedValue = 1f;
             isRunning = false;
             runningTime = 0f;
-            //print("È­¸é ²¨Áø´Ù");
+            //print("í™”ë©´ êº¼ì§„ë‹¤");
         }
 
-        // ÇÃ·¹ÀÌ¾î ¾Ö´Ï¸ŞÀÌ¼Ç
+        // í”Œë ˆì´ì–´ ì• ë‹ˆë©”ì´ì…˜
         anim.SetFloat("Speed", dir.sqrMagnitude * speedValue);
 
         //transform.position += dir * moveSpeed * Time.deltaTime;
-        // Ä³¸¯ÅÍ°¡ ¶¥¿¡ ÀÖÀ¸¸é
+        // ìºë¦­í„°ê°€ ë•…ì— ìˆìœ¼ë©´
         if (cc.isGrounded)
         {
-            // yVelocity 0À¸·Î ÃÊ±âÈ­
+            // yVelocity 0ìœ¼ë¡œ ì´ˆê¸°í™”
             yVelocity = 0;
             jumpCurrCnt = 0;
 
             anim.SetFloat("JumpPose", 0f);
         }
 
-        // ½ºÆäÀÌ½º¹Ù¸¦ ´©¸£¸é
+        // ìŠ¤í˜ì´ìŠ¤ë°”ë¥¼ ëˆ„ë¥´ë©´
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // ÇÃ·¹ÀÌ¾î°¡ Á¡ÇÁÇÑ´Ù.
+            // í”Œë ˆì´ì–´ê°€ ì í”„í•œë‹¤.
             if (jumpCurrCnt < jumpMaxCnt)
             {
-                // yVelocity¿¡ jumpPower¸¦ ¼ÂÆÃÇÑ´Ù.
+                // yVelocityì— jumpPowerë¥¼ ì…‹íŒ…í•œë‹¤.
                 yVelocity = jumpPower;
                 jumpCurrCnt++;
 
@@ -128,25 +131,25 @@ public class PlayerMove : MonoBehaviour
             }
         }
      
-        // Á¡ÇÁ ³¡³ª°í ³ª¸é Áß·Â°ªÀ» ÀÌ¿ëÇØ¼­ °¨¼Ò½ÃÅ²´Ù.
+        // ì í”„ ëë‚˜ê³  ë‚˜ë©´ ì¤‘ë ¥ê°’ì„ ì´ìš©í•´ì„œ ê°ì†Œì‹œí‚¨ë‹¤.
         yVelocity += gravity * Time.deltaTime;
-        // dir.y °ª¿¡ yVelocity ¼ÂÆÃ
+        // dir.y ê°’ì— yVelocity ì…‹íŒ…
         dir.y = yVelocity;
 
-        // Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯¸¦ ÀÌ¿ëÇØ¼­ °È´Â´Ù.
+        // ìºë¦­í„° ì»¨íŠ¸ë¡¤ëŸ¬ë¥¼ ì´ìš©í•´ì„œ ê±·ëŠ”ë‹¤.
         cc.Move(dir * moveSpeed * Time.deltaTime);
 
     }
 
-    // ÇÃ·¹ÀÌ¾î ´ë½¬
+    // í”Œë ˆì´ì–´ ëŒ€ì‰¬
     void WalkRun()
     {
-        // ¿ŞÂÊ Shift Å°¸¦ ´©¸£¸é 
+        // ì™¼ìª½ Shift í‚¤ë¥¼ ëˆ„ë¥´ë©´ 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             SetWalkRun(true);
         }
-        // ¿ŞÂÊ Shift Å°¸¦ ¶¼¸é
+        // ì™¼ìª½ Shift í‚¤ë¥¼ ë–¼ë©´
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             SetWalkRun(false);
@@ -155,14 +158,14 @@ public class PlayerMove : MonoBehaviour
 
     public void SetWalkRun(bool isRun)
     {
-        // isRun ¿¡ µû¶ó¼­ MoveSpeed º¯°æ
+        // isRun ì— ë”°ë¼ì„œ MoveSpeed ë³€ê²½
         moveSpeed = isRun ? runSpeed : moveSpeed;
     }
 
 
     bool isScreen = false;
 
-    // ¶Ù°í ÀÖ´ÂÁö Ã¼Å©ÇÑ´Ù
+    // ë›°ê³  ìˆëŠ”ì§€ ì²´í¬í•œë‹¤
     void CheckRunning()
     {
         if(isRunning)
@@ -173,8 +176,8 @@ public class PlayerMove : MonoBehaviour
             {
                 if(!isScreen)
                 {
-                    // È­¸é º¸¿©ÁÖ±â
-                    print("È­¸é ³ª¿Í¶ó");
+                    // í™”ë©´ ë³´ì—¬ì£¼ê¸°
+                    print("í™”ë©´ ë‚˜ì™€ë¼");
 
                     isScreen = true;
                 }
