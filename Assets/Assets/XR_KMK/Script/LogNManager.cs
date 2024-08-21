@@ -5,9 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
-using Unity.Mathematics;
 
 public class LogNManager : MonoBehaviour
 {
@@ -62,7 +60,7 @@ public class LogNManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            SceneManager.LoadScene(1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
     }
 
@@ -216,7 +214,7 @@ public class LogNManager : MonoBehaviour
 
     public void LoginSuccessNextScene()
     {
-        SceneManager.LoadScene(1); //1번 씬으로 이동
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1); //1번 씬으로 이동
     }
 }
 
