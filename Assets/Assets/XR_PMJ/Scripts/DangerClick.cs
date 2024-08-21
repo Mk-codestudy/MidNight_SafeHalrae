@@ -10,6 +10,9 @@ public class DangerClick : MonoBehaviour
     public Image warningImage;
     public GameObject otherUI;
 
+    [Header("파티클 실행 변수")]
+    public GameObject particleActive;
+
     //[Header("안전이 통신용 변수")]
     //public HttpManager hp;
 
@@ -18,6 +21,7 @@ public class DangerClick : MonoBehaviour
 
     public void TriggerDangerCilck()
     {
+        particleActive.SetActive(true);
         StartCoroutine(FadeInAndOutCoroutine());
     }
 
@@ -27,7 +31,7 @@ public class DangerClick : MonoBehaviour
         yield return StartCoroutine(Fadein(warningImage)); // 첫 번째 Fadein
         yield return new WaitForSeconds(0.5f); // 두 번째 Fadein 전 대기 시간 (필요에 따라 조절)
         yield return StartCoroutine(Fadein(warningImage)); // 두 번째 Fadein
-        
+        particleActive.SetActive(false);
         ShowotherUI();
     }
 
