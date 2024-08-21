@@ -5,13 +5,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEditor.UI;
 using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 
 public class LogNManager : MonoBehaviour
 {
+    //request.SetRequestHeader("Authorization", authKey); //Header에 키 추가
+
+
     [Header("로그인 URL")]
     public string url;
 
@@ -45,6 +47,8 @@ public class LogNManager : MonoBehaviour
     public GameObject joinsfailedUI;
 
 
+    public static string authKey;
+
     void Start()
     {
 
@@ -52,6 +56,14 @@ public class LogNManager : MonoBehaviour
         loginUI.SetActive(false);
         joinUI.SetActive(false);
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     #region 회원가입 통신
@@ -77,6 +89,7 @@ public class LogNManager : MonoBehaviour
 
         using(UnityWebRequest request = UnityWebRequest.Post(url + "/signup", userJsonData, "application/json"))
         {
+            
             yield return request.SendWebRequest();
             if(request.result == UnityWebRequest.Result.Success)
             {
@@ -140,6 +153,9 @@ public class LogNManager : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.result == UnityWebRequest.Result.Success)
             {
+                authKey = request.GetResponseHeader("Authorization");
+                Debug.Log(authKey);
+
                 print(request.downloadHandler.text);
                 if (request.downloadHandler.text.Contains("failType"))
                 {
