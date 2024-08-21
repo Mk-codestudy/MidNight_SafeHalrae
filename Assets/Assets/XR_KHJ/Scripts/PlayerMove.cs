@@ -34,6 +34,11 @@ public class PlayerMove : MonoBehaviour
     Animator anim;
 
     float speedValue = 1;
+
+    // 뛰는 상태와 시간 측정 변수
+    private bool isRunning = false;
+    private float runningTime = 0f;
+    public float warningThreshold = 2.0f;
     
 
     // Start is called before the first frame update
@@ -58,6 +63,8 @@ public class PlayerMove : MonoBehaviour
         // 플레이어 대쉬
         WalkRun();
 
+        // 플레이어가 대쉬 중인지 체크
+        CheckRunning();
     }
    
     // 플레이어 이동
@@ -79,12 +86,17 @@ public class PlayerMove : MonoBehaviour
         {
             SetWalkRun(true);
             speedValue = 2f;
+            isRunning = true;
+            //print("화면 나오나");
         }
         // Shift 떼면 속도값 1배(원위치한다)
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             SetWalkRun(false);
             speedValue = 1f;
+            isRunning = false;
+            runningTime = 0f;
+            //print("화면 꺼진다");
         }
 
         // 플레이어 애니메이션
@@ -145,6 +157,30 @@ public class PlayerMove : MonoBehaviour
     {
         // isRun 에 따라서 MoveSpeed 변경
         moveSpeed = isRun ? runSpeed : moveSpeed;
+    }
+
+
+    bool isScreen = false;
+
+    // 뛰고 있는지 체크한다
+    void CheckRunning()
+    {
+        if(isRunning)
+        {
+            runningTime += Time.deltaTime;
+
+            if(runningTime >= warningThreshold)
+            {
+                if(!isScreen)
+                {
+                    // 화면 보여주기
+                    print("화면 나와라");
+
+                    isScreen = true;
+                }
+                
+            }
+        }
     }
 
 
