@@ -3053,6 +3053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4599200014334280205, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
+        type: 3}
+      propertyPath: jumpPower
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6230782117439605021, guid: ee638ef4170c0ee4a9d65f5628e5dc44,
         type: 3}
       propertyPath: m_LocalPosition.x
