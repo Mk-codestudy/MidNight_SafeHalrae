@@ -36,7 +36,7 @@ public class CamRay : MonoBehaviour
 
         maxDistance = (transform.position - realCamera.position).magnitude;
 
-        Debug.LogError("maxDist :" + maxDistance);
+        //Debug.LogError("maxDist :" + maxDistance);
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class CamRay : MonoBehaviour
         else
         {
             realCamera.transform.position = transform.position + dirToCam * maxDistance;
-            Debug.Log("maxDist :" + (realCamera.position - transform.position).magnitude);
+            //Debug.Log("maxDist :" + (realCamera.position - transform.position).magnitude);
         }
         
 
