@@ -1,4 +1,5 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,12 @@ public class DangerClick : MonoBehaviour
     public float rayDistance = 5f;
     public Image warningImage;
     public GameObject otherUI;
+
+    //[Header("안전이 통신용 변수")]
+    //public HttpManager hp;
+
+    //[Header("랜덤 질문용 리스트")]
+    //public List<string> randomquest = new List<string>();
 
     public void TriggerDangerCilck()
     {
@@ -51,6 +58,7 @@ public class DangerClick : MonoBehaviour
         {
             Debug.Log("켜졌지롱!");
             otherUI.SetActive(true);
+
         }
     }
 }
