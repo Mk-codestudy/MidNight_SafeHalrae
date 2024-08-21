@@ -6354,6 +6354,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4365338722599250}
     m_Modifications:
+    - target: {fileID: 100020, guid: 9905765dac25f1043a8181a65099acb2, type: 3}
+      propertyPath: m_TagString
+      value: Danger
+      objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 9905765dac25f1043a8181a65099acb2, type: 3}
       propertyPath: m_Name
       value: corridor01_stair1 (3)
@@ -6514,6 +6518,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4365338722599250}
     m_Modifications:
+    - target: {fileID: 100020, guid: 9905765dac25f1043a8181a65099acb2, type: 3}
+      propertyPath: m_TagString
+      value: Danger
+      objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 9905765dac25f1043a8181a65099acb2, type: 3}
       propertyPath: m_Name
       value: corridor01_stair1 (5)
