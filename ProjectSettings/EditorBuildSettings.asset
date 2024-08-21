@@ -8,10 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Assets/XR_PMJ/Scene/Login.unity
-    guid: ba67755b4be348749ab8b527ca51604b
-  - enabled: 1
-    path: Assets/Assets/XR_PMJ/Scene/LoginSucc.unity
-    guid: c029989e3109018478f7efa6a120bc8b
   m_configObjects: {}
