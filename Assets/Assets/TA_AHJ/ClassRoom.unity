@@ -6543,7 +6543,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8771,6 +8771,7 @@ GameObject:
   - component: {fileID: 1532228463}
   - component: {fileID: 1532228462}
   - component: {fileID: 1532228464}
+  - component: {fileID: 1532228465}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8888,6 +8889,14 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!81 &1532228465
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532228460}
+  m_Enabled: 1
 --- !u!1001 &1550096731
 PrefabInstance:
   m_ObjectHideFlags: 0
