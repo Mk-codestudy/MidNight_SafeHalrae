@@ -263,6 +263,15 @@ MonoBehaviour:
   DangerClick: {fileID: 0}
   jumpPower: 2
   warningThreshold: 2
+  hp: {fileID: 0}
+  randomquest:
+  - "\uBCF5\uB3C4\uC5D0\uC11C \uB6F0\uC5B4\uB2E4\uB2C8\uBA74 \uBB34\uC2A8 \uC77C\uC774
+    \uC77C\uC5B4\uB098?"
+  - "\uBCF5\uB3C4\uC5D0\uC11C \uB6F0\uAC8C \uB418\uBA74 \uC5B4\uB5A4 \uC77C\uC774
+    \uC77C\uC5B4\uB098\uB294\uC9C0 \uC54C\uB824\uC904\uB798?"
+  - "\uC65C \uBCF5\uB3C4\uC5D0\uC11C \uBABB \uB6F0\uAC8C \uD558\uB294\uAC74\uB370?"
+  - "\uD559\uAD50\uC5D0\uC11C \uB2EC\uB9B4 \uB54C \uC77C\uC5B4\uB0A0 \uC218 \uC788\uB294
+    \uC0AC\uACE0\uC5D0 \uB300\uD574 \uB9D0\uD574\uC918."
 --- !u!143 &6863865076776439297
 CharacterController:
   m_ObjectHideFlags: 0
@@ -348,6 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DangerClick: {fileID: 0}
+  hp: {fileID: 0}
+  randomquest: []
 --- !u!114 &4601088851216700866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,12 +366,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4455425715966035195}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c72bd72f013d8884baca2cdc9278291a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DangerClick: {fileID: 0}
+  hp: {fileID: 0}
+  randomquest:
+  - "\uACC4\uB2E8\uC5D0\uC11C \uC8FC\uD589 \uC911\uC5D0 \uC77C\uC5B4\uB0A0 \uC218
+    \uC788\uB294 \uC0AC\uACE0\uC5D0 \uB300\uD574 \uB9D0\uD574\uC918."
+  - "\uACC4\uB2E8\uC740 \uC65C \uC704\uD5D8\uD574?"
+  - "\uACC4\uB2E8\uC744 \uC774\uC6A9\uD558\uBA74 \uC5B4\uB5A4 \uAC8C \uC704\uD5D8\uD55C\uC9C0
+    \uC54C\uB824\uC904\uB798?"
+  - "\uACC4\uC0B0\uC5D0\uC11C \uBE60\uB974\uAC8C \uB6F0\uBA74 \uC5B4\uB5BB\uAC8C
+    \uB3FC?"
 --- !u!114 &4012235668555986046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +396,14 @@ MonoBehaviour:
   sharp: {fileID: 0}
   interactionDistance: 4
   DangerClick: {fileID: 0}
+  hp: {fileID: 0}
+  randomquest:
+  - "\uCC45\uC0C1 \uBAA8\uC11C\uB9AC\uB294 \uC65C \uC704\uD5D8\uD574?"
+  - "\uCC45\uC0C1\uC5D0\uC11C \uC65C \uB180\uBA74 \uC548 \uB3FC?"
+  - "\uAD50\uC2E4 \uD559\uC6A9\uD488 \uB54C\uBB38\uC5D0 \uC77C\uC5B4\uB0A0 \uC218
+    \uC788\uB294 \uC0AC\uACE0\uC5D0 \uB300\uD574 \uC54C\uB824\uC918."
+  - "\uCC45\uC0C1 \uC704\uC5D0\uC11C \uC65C \uC7A5\uB09C\uC744 \uCE58\uBA74 \uC548
+    \uB3FC?"
 --- !u!1 &5314184935719232902
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +415,7 @@ GameObject:
   - component: {fileID: 1377220223385789851}
   - component: {fileID: 2834170456089384122}
   - component: {fileID: 5103904170461790505}
+  - component: {fileID: 4147104328992647321}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -504,6 +533,14 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!81 &4147104328992647321
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314184935719232902}
+  m_Enabled: 1
 --- !u!1001 &7287780518335963200
 PrefabInstance:
   m_ObjectHideFlags: 0
