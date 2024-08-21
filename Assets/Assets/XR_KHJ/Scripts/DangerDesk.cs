@@ -15,6 +15,8 @@ public class DangerDesk : MonoBehaviour
     [Header("랜덤 질문용 리스트")]
     public List<string> randomquest = new List<string>();
 
+    public bool istalked; //엔딩 측정용 변수
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,7 @@ public class DangerDesk : MonoBehaviour
                 if (DangerClick != null)
                 {
                     print("연필");
-
+                    istalked = true;
                     DangerClick.TriggerDangerCilck();
                     hp.aiSafy[1] = "교실";
                     hp.aiSafy[2] = randomquest[(Random.Range(0, 3))];

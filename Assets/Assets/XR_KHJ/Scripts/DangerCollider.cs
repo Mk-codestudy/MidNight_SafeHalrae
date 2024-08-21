@@ -12,6 +12,8 @@ public class DangerCollider : MonoBehaviour
     [Header("랜덤 질문용 리스트")]
     public List<string> randomquest = new List<string>();
 
+    public bool istalked; //엔딩 측정용 변수
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,7 @@ public class DangerCollider : MonoBehaviour
         {
             print("��ܿ��� �����");
             //���� UI ��Ȱ��ȭ
+            istalked = true;
             DangerClick.TriggerDangerCilck();
             hp.aiSafy[1] = "주행";
             hp.aiSafy[2] = randomquest[(Random.Range(0, 3))];
