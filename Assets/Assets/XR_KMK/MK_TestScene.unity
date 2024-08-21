@@ -3049,7 +3049,7 @@ MonoBehaviour:
   - "\uAD50\uC2E4\uC5D0\uC11C \uC77C\uC5B4\uB0A0 \uC218 \uC788\uB294 \uC0AC\uACE0\uB97C
     \uC54C\uB824\uC918"
   logPart: {fileID: 6002084411051257474, guid: 836a31e383b20184c95fe9652e2c0b7d, type: 3}
-  scrollview: {fileID: 1652729614}
+  scrollview: {fileID: 1201855141}
 --- !u!1 &1898674918
 GameObject:
   m_ObjectHideFlags: 0

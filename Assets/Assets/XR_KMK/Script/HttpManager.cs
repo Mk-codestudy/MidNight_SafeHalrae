@@ -7,7 +7,6 @@ using UnityEditor.UI;
 using UnityEngine.UI;
 using System;
 using TMPro;
-using Newtonsoft.Json;
 
 public class HttpManager : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class HttpManager : MonoBehaviour
 
     [Header("안전이 대화 로그 누적을 위한 프리펩")]
     public GameObject logPart; //프리펩
-    public ScrollRect scrollview; //스크롤
+    public GameObject scrollview; //스크롤
 
     public void SafyStartTalk()
     {
@@ -55,14 +54,12 @@ public class HttpManager : MonoBehaviour
             {
                 //응답받은 데이터 출력
                 string response = request.downloadHandler.text;
-                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
-                
-                //변수에 담아!!
-                string name = dict["trigger"];
-                string contents = dict["chattingContents"];
-                talkabout.text = contents;
+                AISafyData parseData =  JsonUtility.FromJson<AISafyData>(response);
 
-                Debug.Log("챗봇이 다음과 같은 내용으로 응답합니다... : " + contents);
+
+                talkabout.text = parseData.chattingContents;
+
+                Debug.Log("챗봇이 다음과 같은 내용으로 응답합니다... : " + parseData.chattingContents);
 
                 //응답할 때 채팅 로그에 누적시키기
                 // 프리팹 인스턴스화 및 UI 텍스트 설정
@@ -71,9 +68,9 @@ public class HttpManager : MonoBehaviour
                 foreach (Text text in texts)
                 {
                     if (text.name == "LogName")
-                        text.text = name;
+                        text.text = parseData.trigger;
                     else if (text.name == "Log")
-                        text.text = contents;
+                        text.text = parseData.chattingContents;
                 }
 
 
