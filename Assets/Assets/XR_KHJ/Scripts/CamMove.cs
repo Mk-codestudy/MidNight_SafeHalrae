@@ -46,8 +46,8 @@ public class CamMove : MonoBehaviour
         if (useRotX) rotX += my * rotSpeed * Time.deltaTime;
 
         // rotX 의 값의 -80 ~ 80 도로 제한 (최소값, 최대값)
-        rotX = Mathf.Clamp(rotX, -80, 80);
-        rotY = Mathf.Clamp(rotY, -120, 120);
+        rotX = Mathf.Clamp(rotX, -50, 50);
+        rotY = Mathf.Clamp(rotY, -180, 180);
 
         transform.rotation = Quaternion.Euler(rotX, rotY, 0);
 

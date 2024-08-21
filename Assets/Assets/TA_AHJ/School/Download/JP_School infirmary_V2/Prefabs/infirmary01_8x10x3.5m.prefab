@@ -3053,7 +3053,7 @@ GameObject:
   - component: {fileID: 23485363169834796}
   - component: {fileID: 1410746066477265843}
   - component: {fileID: 4686190956607924965}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: corridor_wall_A_infirmary01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
