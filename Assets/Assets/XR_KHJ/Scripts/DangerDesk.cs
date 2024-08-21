@@ -7,7 +7,7 @@ public class DangerDesk : MonoBehaviour
 {
     public GameObject sharp;
     public float interactionDistance = 4f;
-    public 
+    public DangerClick DangerClick;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,8 @@ public class DangerDesk : MonoBehaviour
         if (distanceToPlayer > interactionDistance)
         {
             // UI ��Ȱ��ȭ
-
+            
+    
             return;
         }
         else
@@ -36,9 +37,12 @@ public class DangerDesk : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.E))
             {
-                print("��ȣ�ۿ� üũ");
-                
-                
+                if (DangerClick != null)
+                {
+                    print("연필");
+
+                    DangerClick.TriggerDangerCilck();
+                }
             }
         }
 

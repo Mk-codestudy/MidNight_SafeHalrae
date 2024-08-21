@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DangerCollider : MonoBehaviour
 {
+    public DangerClick DangerClick;
     // Start is called before the first frame update
     void Start()
     {
-        // ½ÃÀÛÇÒ¶§ UI ºñÈ°¼ºÈ­
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ UI ï¿½ï¿½È°ï¿½ï¿½È­
     }
 
     // Update is called once per frame
@@ -18,22 +19,28 @@ public class DangerCollider : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // ¸¸¾à ÇÃ·¹ÀÌ¾î°¡ °è´Ü°ú Ãæµ¹½Ã
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½Ü°ï¿½ ï¿½æµ¹ï¿½ï¿½
         if (other.CompareTag("Danger"))
         {
-            print("°è´Ü¿¡¼­ ³Ñ¾îÁø´Ù");
-            // À§Çè UI È°¼ºÈ­
+            print("ê³„ë‹¨");
+            // ï¿½ï¿½ï¿½ï¿½ UI È°ï¿½ï¿½È­
+            if (DangerClick != null)
+            {
+                //DangerClick.TriggerDangerCilck();
+            }
+            
             
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        // ÇÃ·¹ÀÌ¾î°¡ Ãæµ¹ ¿µ¿ª¿¡¼­ ¹þ¾î³¯ °æ¿ì 
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³¯ ï¿½ï¿½ï¿½ 
         if (other.CompareTag("Danger"))
         {
-            print("°è´Ü¿¡¼­ ¹þ¾î³ª¶ó");
-            //À§Çè UI ºñÈ°¼ºÈ­
+            print("ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³ªï¿½ï¿½");
+            //ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½È°ï¿½ï¿½È­
+            DangerClick.TriggerDangerCilck();
 
         }
     }
