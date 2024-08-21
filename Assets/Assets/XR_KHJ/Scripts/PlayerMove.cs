@@ -25,7 +25,7 @@ public class PlayerMove : MonoBehaviour
     // 최대 점프 횟수
     int jumpMaxCnt = 2;
     // 점프 힘
-    float jumpPower = 3f;
+    public float jumpPower = 3f;
 
     // 움직이고 있는지 판별
     bool isMoving = false;
