@@ -30,6 +30,10 @@ public class PlayerMove : MonoBehaviour
     // 움직이고 있는지 판별
     bool isMoving = false;
 
+    // Animation
+    Animator anim;
+
+    float speedValue = 1;
     
 
     // Start is called before the first frame update
@@ -40,6 +44,9 @@ public class PlayerMove : MonoBehaviour
 
         // 이동속력을 걷는 속력으로 설정
         moveSpeed = walkSpeed;
+
+        // Animator
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -50,6 +57,7 @@ public class PlayerMove : MonoBehaviour
 
         // 플레이어 대쉬
         WalkRun();
+
     }
    
     // 플레이어 이동
@@ -64,16 +72,33 @@ public class PlayerMove : MonoBehaviour
 
         // 움직이고 있는지 판별하자
         isMoving = dir.sqrMagnitude > 0;
-
         dir.Normalize();
+
+        // Shift 누르면 속도값 2배
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            SetWalkRun(true);
+            speedValue = 2f;
+        }
+        // Shift 떼면 속도값 1배(원위치한다)
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            SetWalkRun(false);
+            speedValue = 1f;
+        }
+
+        // 플레이어 애니메이션
+        anim.SetFloat("Speed", dir.sqrMagnitude * speedValue);
 
         //transform.position += dir * moveSpeed * Time.deltaTime;
         // 캐릭터가 땅에 있으면
-        if(cc.isGrounded)
+        if (cc.isGrounded)
         {
             // yVelocity 0으로 초기화
             yVelocity = 0;
             jumpCurrCnt = 0;
+
+            anim.SetFloat("JumpPose", 0f);
         }
 
         // 스페이스바를 누르면
@@ -85,8 +110,12 @@ public class PlayerMove : MonoBehaviour
                 // yVelocity에 jumpPower를 셋팅한다.
                 yVelocity = jumpPower;
                 jumpCurrCnt++;
+
+                anim.SetFloat("JumpPose", 1f);
+                //anim.SetFloat("Speed", 0f);
             }
         }
+     
         // 점프 끝나고 나면 중력값을 이용해서 감소시킨다.
         yVelocity += gravity * Time.deltaTime;
         // dir.y 값에 yVelocity 셋팅
